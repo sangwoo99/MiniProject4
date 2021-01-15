@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel= "stylesheet" type="text/css" href="../css/main.css">
-    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="../js/jquery-1.12.4.min.js"></script>
     <script src="../js/main.js"></script>
 
@@ -22,6 +22,16 @@
             </top>  
            <!--  메뉴에 관련된화면 -->
             <div id="viewMenu">
+                <div class="support">
+                    <p style="
+                    text-align: center;
+                    font-size: 25px;">후원문의 전화번호</p>
+                    <br/>
+                    <p style="
+                    text-align: center;">010-3333-4444</p>
+                    <button style="
+                    text-align: center;"id="close2"> 나가기 </button>
+                </div>
                 <div id="mainImg"></div>
                 <div id="lookView">
                         <!-- 입양관련입력창은 모달로 구현 -->
@@ -55,7 +65,7 @@
                                         </td>
                                         <td colspan="1">
                                             <input type="button"  style=" width: 90%; height: 50%;" onclick="findhome()" value="우편번호 찾기"><br>
-                                            <span id="guide" class="find" style="color:#999;display:none"></span>
+                                            <span id="guide" class="find" style="color:#999; display:none"></span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -63,9 +73,14 @@
                                         <td colspan="3"><input type="text" class="find" style="width: 90%; " id="address" placeholder="주소"></td>
                                     </tr>
                                     <tr>
-                                        <td>상세주소</td>
-                                        <td colspan="3"><input type="text" class="find" style="width: 90%; " id="detailAddress" placeholder="상세주소"></td>
+                                        <td>상세주소
+                                            <br/>
+                                        </td>
+                                        <td colspan="3"><input type="text" class="find" style="width: 90%; " id="detailAddress" placeholder="상세주소">
+                                        <br/><input type="text" class="find" style="width: 90%; width: 90%;border: none;margin-left: 23%;
+                                        color: gray;background-color: ghostwhite;"  id="extraAddress" placeholder="참고항목"></td>
                                     </tr>
+
                              </table>
                              <br/>
                             <input class="privacy" type="button" value="입력완료">
@@ -79,7 +94,8 @@
                                         <td class="backtd"><p><input type="checkbox"  class="checkbox"/>입양후관리 불이행시 회수요청 강제이행 동의</p></td>
                                     </tr>
                                     <tr>
-                                        <td class="backtd"><textarea style="width: 60%; height: 50px;" ></textarea></td>
+                                        <td class="backtd"><textarea style="width: 60%; height: 50px;" >
+                                        입양자는 아래의 사항 불이행시, 입양동물을 회수 조치당할수 있습니다.이는 유기동물 분양의 부분별한 입양과 입양자에게 책임에 대한 의미를 강하게 부여하기 위함임을 미리 고지합니다.[ 필수 준수 사항 지침] 1. 입양자는 입양동물을 임의로 분야하지 못한다. 2.만일, 입양자가 동물 학대의 기준에 적합하거나 근사한 행위를 했다는 것이 입증되면 즉시 입양동물은 본 입양기관에 회수조치된다. 위사항은 필수사항임으로 이에 불이행시 법적인 처벌과 입양취소 처리가 됨을 인지하였고 이에 동의한다.</textarea></td>
                                     </tr>
                                     <tr>
                                         <td class="backtd"><p><input type="checkbox" class="checkbox"/>개인정보제공동의(필수)</p></td>
