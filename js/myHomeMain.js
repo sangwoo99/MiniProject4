@@ -1,5 +1,3 @@
-
-
 //게임들이 끝나고 넘어온 데이터를 받아오는 부분
 var uri = location.href;
 var values = uri.split("?");
@@ -7,20 +5,17 @@ var nameValue = values[1].split("&");
 
 var heartValue = nameValue[0].split("=");
 var heart = 0;
-heart += parseInt(heartValue[1]); 
+heart += parseInt(heartValue[1]);
 console.log(heart);
 var nameValue = nameValue[1].split("=");
 var dogName = nameValue[1];
-
-
 
 // if(value[1] != null) {
 //   var heartValue = value[1].split("=");
 //   heart += parseInt(heartValue[1]);
 // }else{
 //   heart=100;
-// } 
-
+// }
 
 var $dog = null;
 var $dogFace = null;
@@ -34,23 +29,14 @@ var $total = 0;
 var moveTimer = null;
 var eventTimer = null;
 var answerModal = null;
-// var heart = 0;
+
 var year = 0;
 var month = 0;
 var snack = "";
 var wake = "";
 
-
-var clover = "clover";
-var homil = "homil";
-var jein = "jein";
-var serhyun = "serhyun";
-
-// 다시 myHome이 호출되는 시점에 달라지는 좌표
-var time = 10000;
-
 $(document).ready(function () {
-   /* 게임 후 dogName 구분 */
+  /* 게임 후 dogName 구분 */
   // giveDog()
   init();
   initEvent();
@@ -63,12 +49,11 @@ $(document).ready(function () {
   /* 미니게임선택창 닫기 */
   $("#exit").click(function () {
     $("#boxset").hide();
-
   });
 });
 
 function initEvent() {
-  getDog();
+  selectDog();
   randomMove();
   randomEvent();
   clickTV();
@@ -77,10 +62,8 @@ function initEvent() {
 }
 
 function init() {
-  // heart = 100;
   year = 2021;
   month = 1;
-  dogName = getDog();
 
   $date = $("#date");
   $bubbleImg = $("#bubble");
@@ -89,7 +72,7 @@ function init() {
   $comBtn = $(".comBtn");
   $ask = $("#ask");
   $dog = $("#dog");
-  $dogFace = $("#dog img");
+  $dogFace = $("#dog [data-name=" + dogName + "]");
   $total = $("#text");
   $motion = $("#motion");
   $answerModal = $(".answerModal");
@@ -98,22 +81,22 @@ function init() {
   $total.text(heart); //초기 하트값 1000 표시
 }
 
-function giveDog(){ 
-  var nameurl = $(location).attr('search');
-  var url_arr = nameurl.split('=');
-  var arr_lenght = url_arr.lenght
+// function giveDog() {
+//   var nameurl = $(location).attr("search");
+//   var url_arr = nameurl.split("=");
+//   var arr_lenght = url_arr.lenght;
 
-  console.log(url_arr)
-  dogName = url_arr[1]
+//   console.log(url_arr);
+//   dogName = url_arr[1];
 
-  return dogName
-}
+//   return dogName;
+// }
 
-//강아지 이름을 받을 것
-function getDog() {
+//강아지 한마리 선택
+function selectDog() {
   $("#dog :not([data-name=" + dogName + "])").addClass("hidden");
   $("#dog[data-name=" + dogName + "]").removeClass("hidden");
-  return dogName;
+  // return dogName;
 }
 
 // 강아지 랜덤 위치이동
@@ -137,14 +120,14 @@ function randomMove() {
         setLocation($(".location3"));
         break;
     }
-  }, 2000);
+  }, 7000);
 }
 
 //위치 선정 함수
 function setLocation(location) {
-  $dog.each(function () {
-    $(this).appendTo(location);
-  });
+  if ($("#dog [data-name=" + dogName + "]")) {
+    $dog.find($("[data-name=" + dogName + "]")).appendTo(location);
+  }
 
   var x = parseInt(location.css("width")) - parseInt($dog.css("width"));
   var y = parseInt(location.css("height")) - parseInt($dog.css("height"));
@@ -152,7 +135,7 @@ function setLocation(location) {
   x = parseInt(Math.random() * x);
   y = parseInt(Math.random() * y);
 
-  $dog.css({ left: x, top: y });
+  $(".location img").appendTo(location).css({ left: x, top: y });
 }
 
 function setDate() {
@@ -162,7 +145,6 @@ function setDate() {
     year += 1;
     month = 1;
   } else {
-    //날짜를 계속 가게 할지 게임을 끊을지?
     $date.text("🌈행복하게 잘 살았답니다");
   }
 }
@@ -170,6 +152,7 @@ function setDate() {
 //달 클릭시 다음날로
 function nextDay() {
   $("#sleep").click(function () {
+    maskshow();
     gotoSleep();
     clearInterval(moveTimer);
     clearInterval(eventTimer);
@@ -180,6 +163,7 @@ function nextDay() {
       basicFace();
       randomMove();
       randomEvent();
+      $("#mask").hide()
     }, 6000);
   });
 }
@@ -195,7 +179,7 @@ function randomEvent() {
       angryFace();
       badMood();
     }
-  }, 5000);
+  }, 10000);
 }
 
 // getDog메서드로 강아지 이름을 받아 이미지 설정
@@ -218,6 +202,9 @@ function nap() {
   wake = "낮잠중인 강아지🐶💤 깨우시겠어요?";
   $dogFace.off().on("click", function () {
     openModal(wake);
+    sleepyFace();
+    clearInterval(moveTimer);
+    clearInterval(eventTimer);
   });
 }
 
@@ -251,14 +238,14 @@ function openModal(value) {
         annoyed();
         minusHeart(100);
         closeAnswer();
+        randomMove();
+        randomEvent();
       });
 
       $noBtn.off().on("click", function () {
         $dogFace.off("click");
         gotoSleep();
         plusHeart(100);
-        clearInterval(moveTimer);
-        clearInterval(eventTimer);
 
         //5초동안 자고 깨기
         setTimeout(function () {
@@ -346,7 +333,7 @@ function clickTV() {
 
   $("#motion").on("click", function () {
     var ranNum = parseInt(Math.random() * 2);
-    console.log(ranNum);
+
     if (ranNum === 0) {
       openModal(answer);
     } else if (ranNum === 1) {
@@ -368,11 +355,13 @@ function openLoading(whichone, startTime) {
 function openCommercial() {
   $(".comModal").removeClass("hidden");
   getRandomVideo();
-  $(".comModal").on("click", function () {
-    $(".comModal").addClass("hidden");
-    randomMove();
-    randomEvent();
-  });
+  $(".comModal")
+    .off()
+    .on("click", function () {
+      $(".comModal").addClass("hidden");
+      randomMove();
+      randomEvent();
+    });
 }
 
 //광고 비디오 랜덤으로 가져오기
@@ -399,18 +388,26 @@ function minusHeart(score) {
   heart -= score;
   $total.text(heart);
 }
+
 //다음 게임창으로 넘어가는 부분
 function gameIn() {
   $("#touch").on("click", function () {
-    location.href = "touchTouch.html?heart=" + heart +"&dogName="+ dogName;
+    location.href = "touchTouch.html?heart=" + heart + "&dogName=" + dogName;
   });
   $("#walk").on("click", function () {
-    location.href = "dogRace.html?heart=" + heart +"&dogName="+ dogName;
+    location.href = "dogRace.html?heart=" + heart + "&dogName=" + dogName;
   });
   $("#shower").on("click", function () {
-    location.href = "showerGame.html?heart=" + heart +"&dogName="+ dogName;
+    location.href = "showerGame.html?heart=" + heart + "&dogName=" + dogName;
   });
   $("#eat").on("click", function () {
-    location.href = "eatGame.html?heart=" + heart +"&dogName="+ dogName;
+    location.href = "eatGame.html?heart=" + heart + "&dogName=" + dogName;
   });
+}
+
+function maskshow(){
+  var maskHeight = $(document).height();
+  var maskWidth = $(window).width();            
+  $('#mask').css({'width' : maskWidth, 'height' : maskHeight});
+  $("#mask").fadeTo( "slow", 0.5 )
 }
