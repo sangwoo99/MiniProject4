@@ -82,13 +82,13 @@ function donoteat() {
 function dogImageChange() {
     var $bgimg = $("#bgimg");
     if (dogName == "clover")
-        $bgimg.attr("src", "../images/eat_clover.jpg");
+        $bgimg.attr("src", "../images/eat_clover.JPG");
     else if (dogName == "homil")
-        $bgimg.attr("src", "../images/eat_homil.jpg");
+        $bgimg.attr("src", "../images/eat_homil.JPG");
     else if (dogName == "jein")
-        $bgimg.attr("src", "../images/eat_jein.jpg");
+        $bgimg.attr("src", "../images/eat_jein.JPG");
         else if (dogName == "serhyun")
-        $bgimg.attr("src", "../images/eat_serhyun.jpg");
+        $bgimg.attr("src", "../images/eat_serhyun.JPG");
 }
 
 // 개뼈다귀 체인지
