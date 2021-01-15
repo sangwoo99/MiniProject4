@@ -38,37 +38,37 @@
 
 .sector3 {
     position: absolute;
-    left: 850px;
-    top: 750px;
+    left: 600px;
+    top: 650px;
     width: 70px;
     height: 70px;
     /* border: 1px solid black; */
     background-size: cover;
-    background-image: url("../images/3.png");
+    background-image: url("../images/playgame.png");
     display: none;
 }
 
 .sector4 {
     position: absolute;
-    left: 850px;
+    left: 650px;
     top: 250px;
     width: 70px;
     height: 70px;
     /* border: 1px solid black; */
     background-size: cover;
-    background-image: url("../images/3.png");
+    background-image: url("../images/playgame.png");
     display: none;
 }
 
 .sector5 {
     position: absolute;
-    left: 1300px;
+    left: 1100px;
     top: 500px;
     width: 70px;
     height: 70px;
     /* border: 1px solid black; */
     background-size: cover;
-    background-image: url("../images/3.png");
+    background-image: url("../images/playgame.png");
     display: none;
 }
 
