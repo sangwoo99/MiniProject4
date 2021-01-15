@@ -1,0 +1,214 @@
+
+/* 모달생성시 background 이미지 */
+#mask{
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    background-color: #000000;
+    display: none;
+
+}
+/* 전체적인 레이아웃 틀 */
+#world{
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/background.png");
+    overflow: hidden;
+}
+#container{
+    margin: 0 auto;
+    padding-left: 50px;
+    width: 1180px;
+    height: 900px;
+    overflow: hidden;
+}
+
+/*하단 이미지*/
+#mainImg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 600px;
+
+    display: none;
+    margin: 100px 0 0 150px;
+    width: 900px;
+    height: 535px;
+    background-image: url("../images/main.png");
+}
+
+#lookView{
+    display: none;
+}
+/* top : 메뉴바  */
+#headMenu{
+    width: 100%;
+    height: 330px;
+}
+.menubar{
+    margin-top: 5%;
+    display: inline;
+}
+p.menubar{
+    font-size: 16px;
+     margin-left: 3%;
+}
+p.menubar:hover{
+    color: rgb(255, 215, 0);
+    
+}
+/* detail 메뉴 */
+#viewMenu{
+    width: 100%;
+    height: 800px;
+    overflow: hidden;
+}
+.card{
+    position: relative;
+    width: 230px;
+    height: 400px;
+    display: inline;
+    border: 1px black ;
+    float: left; 
+    margin-top: 13%;
+    margin-left: 50px;
+    border-radius: 20px;
+    background-color: rgb(233, 233, 228);
+}
+.card:hover{
+    -webkit-transform:scale(1.2);
+    background-color: rgb(255, 215, 0);
+    height: 390px;
+}
+
+
+/* 강아지 이미지 */
+.photo{
+    width: 160px; 
+    height: 160px; 
+    border:0px ;
+    margin-left: 35px; 
+    margin-right: 35px;
+}
+#homil{
+ background-image: url("../images/web_homil.png");
+}
+#jein{
+    background-image: url("../images/web_jein.png");
+}
+#serhyun{
+    background-image: url("../images/web_serhyun.png");
+}
+#clover{
+    background-image: url("../images/web_clover.png");
+}
+
+li{
+    list-style:none ;
+}
+
+.btn{
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: rgb(255, 215, 0);
+    border: 0px;
+    font-size: 15px;
+    color: black;
+}
+.btn:hover{
+    font-size: 15px;
+    background-color:white;
+    color: black;
+}
+
+
+.companionView{
+    position: relative;
+    width: 650px;
+    height: 600px;
+    background: ghostwhite;
+    border: 1px solid rgba(139, 73, 73, 0.062);
+    transform: rotateY(0deg);
+    transform-origin: top;
+    transform-style: preserve-3d;
+    transition: 5s;
+    display: none;
+    z-index: 9999;
+    margin: 0 auto;
+    
+}
+
+.flipped{
+    background: grey;
+}
+.flipped .companionView {
+  transform: rotateY(180deg);
+}
+
+.box-side{
+    /* 서로 다른 박스가 같은 위치에 붙어있게 만들기 */
+    position: absolute;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.panel{            
+    background-color:white;
+}
+
+.front{            
+   transform: translateZ(0px);
+}
+.back{
+    transform: rotateY(180deg);
+}
+
+input{
+    border: 0.5px solid rgb(207, 207, 207); 
+    border-radius: 2px;
+    height: 25px;
+
+}
+
+.checkbox{
+    height: 10px;
+}
+
+/* 개인정보 관련 */
+.legalInput{
+    text-align: center;
+}
+/* 게임관련 */
+#game{
+    display: none;
+}
+
+#backgroundJpg{
+    z-index: 997;
+}
+
+
+table{
+    margin-left: 13%;
+    margin-right: 10%;
+    height: 450px;
+
+}
+
+td{
+    border: 1px solid ghostwhite;
+    empty-cells: show;
+}
+
+.backtd{
+    border: 0px;
+}
+.privacy{
+    margin-left: 43%;
+}
