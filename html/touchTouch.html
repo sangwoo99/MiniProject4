@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/touchTouch.css">
+    <title>touchTouch</title>
+    <script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="../js/touchTouch.js"></script>
+</head>
+
+<body>
+    <div class="informModal">
+        <h4 align="center">[게임 설명]</h4>
+        <div>강아지를 잘 쓰다듬어 주세요. 강아지가 기분이 좋아지면 하트가 올라가고
+            기분이 안좋아지면 번개가 올라갑니다. 
+        </div>
+        <br/>
+        <div>[성공 조건] 하트를 6개: 성공, 캐쉬 하트 100개를 획득</div>
+        <div>[실패 조건] 번개 6개: 실패</div>
+        <br/>
+        <button id="start">게임 시작</button>
+    </div>
+    <div id="background">
+        <div class="dogbody">
+            <div class="status">
+                <div id="sHeart"></div>
+                <div id="sThunder"></div>
+            </div>
+
+            <div class="sector1">
+                <div id="heart1"></div>
+            </div>
+
+            <div class="sector2">
+                <div id="heart2"></div>
+            </div>
+            <div class="sector3"></div>
+            <div class="sector4"></div>
+            <div class="sector5"></div>
+        </div>
+    </div>
+    <div class="finishModal">
+        <div id="result"></div>
+        <br />
+        <button id="exit">나가기</button>
+    </div>
+</body>
+
+</html>
