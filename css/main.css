@@ -124,6 +124,24 @@ li{
     color: black;
 }
 
+.support{
+    position: relative;
+    width: 350px;
+    height: 280px;
+    background: ghostwhite;
+    border: 1px solid rgba(139, 73, 73, 0.062);
+    z-index: 10001;
+    margin: 0 auto;
+    margin-bottom: 500px;
+    border-radius: 10px;
+    display: none;
+}
+
+#close2{
+    text-align: center;
+    margin-top: 10%;
+    margin-left: 43%;
+}
 
 .companionView{
     position: relative;
